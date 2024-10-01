@@ -1,3 +1,13 @@
+1) `npm install -g @bazel/bazelisk`
+2) `bazelisk version`
+3) `export USE_BAZEL_VERSION=6.5.0`
+4) `bazelisk build --incompatible_no_rule_outputs_param=false tensorboard/plugins/projector/vz_projector:standalone`
+5) Copy output to `bazel-bin/tensorboard/plugins/projector/vz_projector/standalone_bundle.js`  to portal folder /public/projector/
+
+
+
+
+
 # TensorBoard [![GitHub Actions CI](https://github.com/tensorflow/tensorboard/workflows/CI/badge.svg)](https://github.com/tensorflow/tensorboard/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush) [![GitHub Actions Nightly CI](https://github.com/tensorflow/tensorboard/workflows/nightly-release/badge.svg)](https://github.com/tensorflow/tensorboard/actions?query=workflow%3Anightly-release+branch%3Amaster) [![PyPI](https://badge.fury.io/py/tensorboard.svg)](https://badge.fury.io/py/tensorboard)
 
 TensorBoard is a suite of web applications for inspecting and understanding your

@@ -21,12 +21,14 @@ export const template = html`
     <style>
       :host {
         display: flex;
+        flex-direction: column; /* Stack elements vertically */
         width: 100%;
         height: 100%;
       }
 
-      #container {
+      #container, #container-2, #container-3 {
         display: flex;
+        flex-direction: column; /* Ensure each container's children are stacked vertically */
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -46,6 +48,7 @@ export const template = html`
       #main .stage {
         position: relative;
         flex-grow: 2;
+        height: 500px;
       }
 
       #scatter {
@@ -262,12 +265,7 @@ export const template = html`
       </div>
     </paper-dialog>
     <div id="container">
-      <div id="left-pane" class="ink-panel">
-        <vz-projector-data-panel id="data-panel"></vz-projector-data-panel>
-        <vz-projector-projections-panel
-          id="projections-panel"
-        ></vz-projector-projections-panel>
-      </div>
+      
       <div id="main" class="ink-panel">
         <div class="ink-panel-menubar">
           <paper-icon-button
@@ -381,6 +379,19 @@ export const template = html`
           </paper-dialog>
         </div>
       </div>
+
+     </div>
+     <div id="container-2">
+
+      <br/><br/><br/><br/>
+      <div id="left-pane" class="ink-panel">
+        <vz-projector-data-panel id="data-panel"></vz-projector-data-panel>
+        <vz-projector-projections-panel
+          id="projections-panel"
+        ></vz-projector-projections-panel>
+      </div>
+     </div>
+     <div id="container-3">
       <div id="right-pane" class="ink-panel">
         <div class="ink-panel-content active">
           <vz-projector-inspector-panel
@@ -393,6 +404,8 @@ export const template = html`
           ></vz-projector-bookmark-panel>
         </div>
       </div>
+
+
     </div>
     <paper-toast id="toast" always-on-top></paper-toast>
   </template>

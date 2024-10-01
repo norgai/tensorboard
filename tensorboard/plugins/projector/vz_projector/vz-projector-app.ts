@@ -51,47 +51,9 @@ class VzProjectorApp extends PolymerElement {
         height: calc(100% - 60px);
       }
 
-      #container {
-        height: 100%;
-      }
     </style>
 
-    <div id="container">
-      <div id="appbar">
-        <div>Embedding Projector</div>
-        <div class="icons">
-          <a
-            title="Documentation"
-            target="_blank"
-            href="[[documentationLink]]"
-            rel="noopener noreferrer"
-          >
-            <paper-icon-button icon="help-outline"></paper-icon-button>
-            <paper-tooltip
-              position="bottom"
-              animation-delay="0"
-              fit-to-visible-bounds=""
-            >
-              Open documentation
-            </paper-tooltip>
-          </a>
-          <a
-            title="Report bug"
-            target="_blank"
-            href="[[bugReportLink]]"
-            rel="noopener noreferrer"
-          >
-            <paper-icon-button icon="bug-report"></paper-icon-button>
-            <paper-tooltip
-              position="bottom"
-              animation-delay="0"
-              fit-to-visible-bounds=""
-            >
-              Report a bug
-            </paper-tooltip>
-          </a>
-        </div>
-      </div>
+    
       <vz-projector
         route-prefix="[[routePrefix]]"
         serving-mode="[[servingMode]]"
@@ -100,7 +62,7 @@ class VzProjectorApp extends PolymerElement {
         event-logging="[[eventLogging]]"
       >
       </vz-projector>
-    </div>
+    
   `;
   @property({type: Boolean})
   pageViewLogging: boolean = false;
