@@ -21,7 +21,8 @@ export const template = html`
   <style include="vz-projector-styles"></style>
   <style>
     .container {
-      padding: 5px 20px 20px 20px;
+      width: 100%;
+      //padding: 5px 20px 20px 20px;
     }
 
     input[type='file'] {
@@ -245,8 +246,15 @@ export const template = html`
       display: none;
       margin-top: 10px;
     }
+
+    .hidden-dropdown {
+  opacity: 0;  /* Makes the dropdown invisible */
+  pointer-events: none; /* Prevent user interaction, but dropdown still works programmatically */
+  position: absolute; /* Remove from layout flow */
+}
+
   </style>
-  <div class="title">DATA</div>
+  <div class="title hidden-dropdown">DATA</div>
   <div class="container">
     <!-- List of runs -->
     <template is="dom-if" if="[[_hasChoices(runNames)]]">
@@ -270,31 +278,21 @@ export const template = html`
     </template>
 
     <template is="dom-if" if="[[tensorNames]]">
-      <!-- List of tensors in checkpoint -->
-      <paper-dropdown-menu
-        no-animations
-        label="[[_getNumTensorsLabel(tensorNames)]] found"
-      >
-        <paper-listbox
-          attr-for-selected="value"
-          class="dropdown-content"
-          selected="{{selectedTensor}}"
-          slot="dropdown-content"
-        >
-          <template is="dom-repeat" items="[[tensorNames]]">
-            <paper-item value="[[item.name]]" label="[[item.name]]">
-              [[item.name]]
-              <span class="item-details">
-                [[item.shape.0]]x[[item.shape.1]]
-              </span>
-            </paper-item>
-          </template>
-        </paper-listbox>
-      </paper-dropdown-menu>
-    </template>
+  <paper-dropdown-menu class="hidden-dropdown" no-animations label="[[_getNumTensorsLabel(tensorNames)]] found">
+    <paper-listbox attr-for-selected="value" class="dropdown-content" selected="{{selectedTensor}}" slot="dropdown-content">
+      <template is="dom-repeat" items="[[tensorNames]]">
+        <paper-item value="[[item.name]]" label="[[item.name]]">
+          [[item.name]]
+          <span class="item-details">[[item.shape.0]]x[[item.shape.1]]</span>
+        </paper-item>
+      </template>
+    </paper-listbox>
+  </paper-dropdown-menu>
+</template>
+
 
     <div hidden$="[[!_hasChoices(colorOptions)]]">
-      <div class="colorlabel-container">
+      <div class="colorlabel-container hidden-dropdown">
         <!-- Label by -->
         <paper-dropdown-menu id="labelby" no-animations label="Label by">
           <paper-listbox
@@ -380,7 +378,7 @@ export const template = html`
         </paper-input>
       </div>
       <!-- Edit by -->
-      <div class="metadata-editor">
+      <div class="metadata-editor hidden-dropdown">
         <paper-dropdown-menu no-animations label="Edit by">
           <paper-listbox
             attr-for-selected="value"
@@ -405,7 +403,7 @@ export const template = html`
         </paper-input>
       </div>
     </template>
-    <div id="demo-data-buttons-container">
+    <div id="demo-data-buttons-container" class="hidden-dropdown"> 
       <span class="button-container">
         <paper-tooltip
           position="bottom"
@@ -628,24 +626,25 @@ export const template = html`
         <div class="dismiss-dialog-note">Click outside to dismiss.</div>
       </paper-dialog>
     </div>
-    <paper-checkbox id="normalize-data-checkbox" checked="{{normalizeData}}">
+    <paper-checkbox id="normalize-data-checkbox" class="hidden-dropdown" checked="{{normalizeData}}">
       Spherize data
     </paper-checkbox>
     <paper-icon-button
       id="normalize-data-help"
       icon="help"
-      class="help-icon"
+      class="help-icon hidden-dropdown"
     ></paper-icon-button>
     <paper-tooltip
       for="normalize-data-help"
       position="bottom"
       animation-delay="0"
+      class="hidden-dropdown"
       fit-to-visible-bounds
     >
       The data is normalized by shifting each point by the centroid and making
       it unit norm.
     </paper-tooltip>
-    <div class="dirs">
+    <div class="dirs hidden-dropdown">
       <table>
         <tr>
           <td>Checkpoint:</td>

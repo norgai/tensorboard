@@ -138,9 +138,14 @@ export const template = html`
       #total-variance {
         color: rgba(0, 0, 0, 0.7);
       }
+        .hidden {
+  opacity: 0;  /* Makes the dropdown invisible */
+  pointer-events: none; /* Prevent user interaction, but dropdown still works programmatically */
+  position: absolute; /* Remove from layout flow */
+}
     </style>
     <div id="main">
-      <div class="ink-panel-header">
+      <div class="ink-panel-header hidden">
         <div class="ink-tab-group">
           <div
             data-tab="umap"
@@ -178,7 +183,7 @@ export const template = html`
       </div>
       <div class="container">
         <!-- UMAP Controls -->
-        <div data-panel="umap" class="ink-panel-content">
+        <div data-panel="umap" class="ink-panel-content hidden">
           <div class="slider">
             <label>Dimension</label>
             <div class="two-way-toggle">
@@ -268,7 +273,7 @@ export const template = html`
           </p>
         </div>
         <!-- TSNE Controls -->
-        <div data-panel="tsne" class="ink-panel-content">
+        <div data-panel="tsne" class="ink-panel-content hidden">
           <div class="slider">
             <label>Dimension</label>
             <div class="two-way-toggle">
@@ -387,7 +392,7 @@ export const template = html`
           </p>
         </div>
         <!-- PCA Controls -->
-        <div data-panel="pca" class="ink-panel-content">
+        <div data-panel="pca" class="ink-panel-content hidden">
           <div class="two-columns">
             <div>
               <!-- Left column -->
@@ -506,7 +511,7 @@ export const template = html`
           </paper-tooltip>
         </div>
         <!-- Custom Controls -->
-        <div data-panel="custom" class="ink-panel-content">
+        <div data-panel="custom" class="ink-panel-content hidden">
           <paper-dropdown-menu
             style="width: 100%"
             no-animations

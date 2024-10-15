@@ -81,8 +81,8 @@ export const template = html`
         background: #fafafa;
         display: flex;
         height: 100%;
-        min-width: 300px;
-        width: 300px;
+        min-width: 500px;
+        width: 100%;
       }
 
       .file-name {
@@ -249,6 +249,17 @@ export const template = html`
         align-items: center;
         --paper-toast-color: #eeff41;
       }
+         #reset-zoom {
+    background-color: #f3f3f3; /* Set a light gray background */
+    color: #000; /* Ensure the icon color is black or another distinct color */
+    border-radius: 50%; /* Add a circular shape for the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add some shadow for contrast */
+  }
+    hidden {
+  opacity: 0;  /* Makes the dropdown invisible */
+  pointer-events: none; /* Prevent user interaction, but dropdown still works programmatically */
+  position: absolute; /* Remove from layout flow */
+}
     </style>
     <paper-dialog id="notification-dialog" modal>
       <h2 id="notification-title"></h2>
@@ -381,7 +392,7 @@ export const template = html`
       </div>
 
      </div>
-     <div id="container-2">
+     <div id="container-2" class="hidden">
 
       <br/><br/><br/><br/>
       <div id="left-pane" class="ink-panel">

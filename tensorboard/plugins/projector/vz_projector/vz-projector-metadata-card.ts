@@ -27,6 +27,9 @@ class MetadataCard extends LegacyElementMixin(PolymerElement) {
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
           0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         width: 270px;
+        color: black;
+        overflow-y: auto; /* Allows vertical scrolling */
+        max-height: 400px; /* Optional: restricts the height to allow vertical scrolling */
       }
 
       #header {
@@ -51,6 +54,9 @@ class MetadataCard extends LegacyElementMixin(PolymerElement) {
       #metadata-table {
         display: table;
         padding: 8px 12px 4px;
+        overflow-y: auto; /* Vertical scrolling for the table */
+        max-width: 100%; /* Ensures the table fits within the card */
+        min-width: 100%; /* Ensures horizontal scrolling if content overflows */
       }
 
       .metadata-row {

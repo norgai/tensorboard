@@ -27,7 +27,8 @@ export const template = html`
 
     .container {
       display: block;
-      padding: 10px 20px 0 20px;
+      width: 100%;
+      //padding: 10px 20px 0 20px;
     }
 
     .buttons {
@@ -208,6 +209,7 @@ export const template = html`
     .results {
       display: flex;
       flex-direction: column;
+      color:black;
     }
 
     .results,
@@ -215,9 +217,15 @@ export const template = html`
     .nn-list {
       flex: 1 0 100px;
     }
+    
+    .hidden {
+  opacity: 0;  /* Makes the dropdown invisible */
+  pointer-events: none; /* Prevent user interaction, but dropdown still works programmatically */
+  position: absolute; /* Remove from layout flow */
+}
   </style>
   <div class="container">
-    <div class="buttons">
+    <div class="buttons hidden">
       <button class="button reset-filter">Show all data</button>
       <button class="button set-filter">Isolate selection</button>
       <button class="button clear-selection">Clear selection</button>
