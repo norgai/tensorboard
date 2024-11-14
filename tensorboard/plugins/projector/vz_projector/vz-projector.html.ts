@@ -186,6 +186,9 @@ export const template = html`
         border-bottom: solid 1px #eee;
         padding: 0 24px;
         display: flex;
+        background: #fafafa;
+  color: #000;
+  transition: background 0.3s, color 0.3s; /* Smooth transition */
       }
 
       .ink-panel-menubar .ink-fabs {
@@ -260,6 +263,8 @@ export const template = html`
   pointer-events: none; /* Prevent user interaction, but dropdown still works programmatically */
   position: absolute; /* Remove from layout flow */
 }
+
+
     </style>
     <paper-dialog id="notification-dialog" modal>
       <h2 id="notification-title"></h2>

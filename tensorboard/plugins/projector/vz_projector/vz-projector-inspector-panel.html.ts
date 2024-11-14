@@ -248,7 +248,7 @@ export const template = html`
       </paper-dropdown-menu>
     </div>
   </div>
-  <div class="results">
+  <div class="results" id="knowledgeresults">
     <div class="nn" style="display: none">
       <div class="neighbors">
         <div class="neighbors-options">

@@ -671,11 +671,34 @@ export class ScatterPlot {
   }
   setDayNightMode(isNight: boolean) {
     const canvases = this.container.querySelectorAll('canvas');
-    const filterValue = isNight ? 'invert(100%)' : null;
+    const filterValue = isNight ? 'invert(80%)' : 'none';
+  
+    // Apply the filter to all canvas elements
     for (let i = 0; i < canvases.length; i++) {
-      canvases[i].style.filter = filterValue!;
+      canvases[i].style.filter = filterValue;
+    }
+  
+    // Select the #inspector-panel element and apply the filter
+    const inspectorPanel = document.getElementById('inspector-panel');
+    if (inspectorPanel) {
+      inspectorPanel.style.filter = filterValue;
+    }
+  
+    // Select the search box and results elements and apply the filter
+    const searchBox = this.container.querySelector('vz-projector-input#search-box');
+    const results = this.container.querySelector('.results');
+  
+    if (searchBox) {
+      (searchBox as HTMLElement).style.filter = filterValue;
+    }
+  
+    if (results) {
+      (results as HTMLElement).style.filter = filterValue;
     }
   }
+  
+  
+  
   resize(render = true) {
     const [oldW, oldH] = [this.width, this.height];
     const [newW, newH] = this.getLayoutValues();
